@@ -149,7 +149,7 @@ export function FinalSurprise({ onReplay, onViewMemories }: FinalSurpriseProps) 
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
       >
-        <p className="font-body text-xs uppercase tracking-[0.4em] text-champagne/85">Happy Birthday</p>
+        <p className="font-body text-xs uppercase tracking-[0.4em] text-champagne/85">Happy Birthday Again My Girl</p>
         <h2 className="font-display mt-4 text-5xl text-ivory sm:text-6xl">{siteConfig.girlfriendName}</h2>
         <p className="text-balance mx-auto mt-6 font-body text-base leading-relaxed text-ivory/90">
           {siteConfig.finalMessage}
