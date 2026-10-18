@@ -53,13 +53,13 @@ export function LockScreen({ onUnlock }: LockScreenProps) {
 
   return (
     <motion.section
-      className="fixed inset-0 z-[90] flex min-h-[100svh] flex-col bg-midnight lg:flex-row"
+      className="fixed inset-0 z-[90] flex min-h-[100svh] flex-col overflow-y-auto bg-midnight lg:flex-row lg:overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, scale: 1.02 }}
       transition={{ duration: 0.8 }}
     >
-      <div className="relative h-[42svh] shrink-0 lg:h-auto lg:min-h-[100svh] lg:w-[52%]">
+      <div className="relative h-[30svh] min-h-32 max-h-64 shrink-0 lg:h-auto lg:min-h-[100svh] lg:max-h-none lg:w-[52%]">
         <PhotoImage
           {...photos.lockScreen}
           priority
@@ -69,7 +69,7 @@ export function LockScreen({ onUnlock }: LockScreenProps) {
         <div className="gradient-readability-bottom absolute inset-0 lg:hidden" />
       </div>
 
-      <div className="relative flex flex-1 flex-col justify-center px-6 py-10 lg:px-14">
+      <div className="relative flex flex-1 flex-col justify-start px-6 py-6 lg:justify-center lg:px-14 lg:py-10">
         <div className="grain-overlay absolute inset-0 opacity-40" aria-hidden />
         <p className="font-display text-2xl text-ivory sm:text-3xl">
           A little surprise is waiting for you.
@@ -77,7 +77,7 @@ export function LockScreen({ onUnlock }: LockScreenProps) {
         <p className="mt-2 font-body text-sm text-ivory/65">Enter the secret code</p>
 
         <motion.div
-          className="mt-8 flex gap-3"
+          className="mt-5 flex gap-3 lg:mt-8"
           animate={shake ? { x: [0, -10, 10, -8, 8, 0] } : { x: 0 }}
           transition={{ duration: 0.45 }}
           role="group"
@@ -97,14 +97,14 @@ export function LockScreen({ onUnlock }: LockScreenProps) {
           ))}
         </motion.div>
 
-        <div className="mt-8 grid max-w-xs grid-cols-3 gap-3">
+        <div className="mt-5 grid max-w-xs grid-cols-3 gap-2.5 lg:mt-8 lg:gap-3">
           {KEYS.map((key, idx) => {
             if (key === '') {
               return (
                 <button
                   key={`empty-${idx}`}
                   type="button"
-                  className="min-h-14 rounded-2xl"
+                  className="min-h-12 rounded-2xl lg:min-h-14"
                   aria-hidden
                   tabIndex={-1}
                   disabled
@@ -118,7 +118,7 @@ export function LockScreen({ onUnlock }: LockScreenProps) {
                 type="button"
                 whileTap={{ scale: 0.94 }}
                 onClick={() => handleKey(key)}
-                className="flex min-h-14 items-center justify-center rounded-2xl border border-glass-border bg-glass font-body text-lg text-ivory transition hover:border-champagne/35"
+                className="flex min-h-12 items-center justify-center rounded-2xl border border-glass-border bg-glass font-body text-lg text-ivory transition hover:border-champagne/35 lg:min-h-14"
                 aria-label={isDel ? 'Delete digit' : `Digit ${key}`}
               >
                 {isDel ? <Delete className="h-5 w-5" strokeWidth={1.5} /> : key}
