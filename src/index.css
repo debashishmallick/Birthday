@@ -1,0 +1,114 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
+  --color-midnight: #7f3052;
+  --color-midnight-soft: #8e3b60;
+  --color-burgundy: #a9446c;
+  --color-burgundy-glow: #ce638b;
+  --color-ivory: #fff5f1;
+  --color-champagne: #f2c8d4;
+  --color-rose-accent: #f09bb5;
+  --color-glass: rgb(255 245 241 / 0.1);
+  --color-glass-border: rgb(255 245 241 / 0.2);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    margin: 0;
+    min-height: 100svh;
+    font-family: var(--font-body);
+    background: var(--color-midnight);
+    color: var(--color-ivory);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  #root {
+    isolation: isolate;
+  }
+
+  ::selection {
+    background: rgb(240 155 181 / 0.35);
+    color: var(--color-ivory);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-champagne);
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .grain-overlay {
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  }
+
+  .cinematic-vignette {
+    background: radial-gradient(
+      ellipse 80% 70% at 50% 45%,
+      transparent 35%,
+      rgb(39 13 27 / 0.55) 100%
+    );
+  }
+
+  .gradient-readability-left {
+    background: linear-gradient(
+      90deg,
+      rgb(39 13 27 / 0.92) 0%,
+      rgb(39 13 27 / 0.55) 45%,
+      transparent 100%
+    );
+  }
+
+  .gradient-readability-bottom {
+    background: linear-gradient(
+      0deg,
+      rgb(39 13 27 / 0.95) 0%,
+      rgb(39 13 27 / 0.4) 50%,
+      transparent 100%
+    );
+  }
+
+  .glass-panel {
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
+    backdrop-filter: blur(12px);
+  }
+
+  /* Never apply blur to photo elements — glass is for UI panels only */
+  .photo-sharp {
+    image-rendering: auto;
+    filter: none;
+  }
+}
