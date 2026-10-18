@@ -71,13 +71,13 @@ export function ScratchCard() {
       <h2 className="text-center font-display text-3xl text-ivory">Scratch to reveal a little surprise</h2>
       <div
         ref={containerRef}
-        className="relative mx-auto mt-10 aspect-[4/5] max-w-md overflow-hidden rounded-2xl shadow-[0_24px_80px_rgb(0_0_0/0.4)]"
+        className="relative mx-auto mt-10 min-h-[38rem] max-w-md overflow-hidden rounded-2xl shadow-[0_24px_80px_rgb(0_0_0/0.4)] sm:aspect-[4/5] sm:min-h-0"
       >
         <div className="absolute inset-0 flex flex-col bg-midnight-soft">
-          <div className="relative h-1/2">
+          <div className="relative h-2/5 shrink-0 sm:h-1/2">
             <PhotoImage {...photos.scratch} />
           </div>
-          <div className="flex flex-1 flex-col justify-center px-6 text-center">
+          <div className="flex flex-1 flex-col justify-center px-5 py-6 text-center sm:px-6">
             <p className="font-display text-xl text-champagne">{siteConfig.scratchReveal.title}</p>
             <p className="mt-3 font-body text-sm leading-relaxed text-ivory/80">
               {siteConfig.scratchReveal.message}
